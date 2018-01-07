@@ -1,0 +1,37 @@
+<div class="flex-container">
+    <div class="inner-container">
+        <br />
+        <mat-card class="custom-card" *ngIf="blogStory">
+            <mat-card-title>
+                {{blogStory.blogTitle}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                Author:<span>{{blogStory.blogOwner.memberName}}</span>
+                <span class="fill-space"></span>
+                <span>{{blogStory.createdAt}}</span>
+            </mat-card-subtitle>
+            <hr />
+            <mat-card-content>
+                {{blogStory.blogDescription}}
+            </mat-card-content>
+            <mat-card-content>
+               <span [innerHTML]="blogStory.blogFullStory"></span>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <hr/>
+
+    <div class="inner-container">
+        <mat-toolbar>
+                <button mat-button *ngIf="appService.user.blogger && userLikeAction" (click)="likeStory()">LIKE</button>
+                <button mat-button *ngIf="appService.user.blogger && !userLikeAction" (click)="unLikeStory()">UNLIKE</button>
+                <button mat-button>SHARE</button>
+        </mat-toolbar>
+        
+    </div>
+
+    <div class="inner-container" *ngIf="appService.user.blogger">
+        <comment-box></comment-box>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="example-container">
+        <div class="inner-container">
+            <mat-toolbar>
+              <span>Sign Up</span>
+            </mat-toolbar>
+            <form [formGroup]="signUpForm" novalidate>           
+            <mat-form-field class="form-style">
+                <input matInput formControlName="firstName" class="form-control" placeholder="First Name">
+            </mat-form-field>
+        
+            <mat-form-field class="form-style">
+                <input matInput formControlName="lastName" placeholder="Last Name">
+            </mat-form-field>
+
+            <mat-form-field class="form-style">
+                <input matInput formControlName="email" placeholder="Enter your email">
+            </mat-form-field>
+
+            <mat-form-field class="form-style">
+                <input matInput formControlName="contact" placeholder="Phone Number">
+            </mat-form-field>
+
+            <mat-form-field class="form-style">
+                <input matInput [matDatepicker]="picker" formControlName="birthDate" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+    
+            <button mat-raised-button class="btn-style"
+            (click)="signUp()">Sign Up</button>
+            </form>
+            <span class="sign-style">OR</span>
+            
+            <a [routerLink]="['/login']" class="sign-up-style">Login</a>
+            
+        </div>
+        
+      </div>

@@ -1,0 +1,26 @@
+<div class="example-container">
+    <div class="inner-container">
+        <mat-toolbar>
+        `   <span>Login</span>
+        </mat-toolbar>
+        
+        <form [formGroup]="loginForm" novalidate>
+        <mat-form-field class="form-style">
+            <input matInput placeholder="Username" formControlName="userEmail" class="form-control">
+        </mat-form-field>
+    
+        <mat-form-field class="form-style">
+            <input matInput placeholder="Password" formControlName="password" class="form-control">
+        </mat-form-field>
+
+        <button mat-raised-button class="btn-style" (click)="loginUser()">Login</button>
+
+        </form>
+
+        <span class="sign-style">OR</span>
+        
+        <a [routerLink]="['/sign-up']" class="sign-up-style">SignUp with Email</a>
+        
+    </div>
+    
+  </div>

@@ -1,0 +1,39 @@
+<div class="example-container">
+    <div class="inner-container">
+    <mat-toolbar>
+         <span>Create Blog</span>
+         <span class="fill-space"></span>
+         <span>
+            <button mat-raised-button>Preview</button>         
+         </span>
+    </mat-toolbar>
+                  
+    <mat-form-field class="form-style">
+        <input matInput placeholder="Title" [(ngModel)]="title">
+    </mat-form-field>
+
+    <mat-form-field class="form-style">
+        <textarea matInput placeholder="Short Description" matInput-minlength="2"
+        matInput-maxlength="200" [(ngModel)]="description"></textarea>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-select placeholder="Category" [(ngModel)]="category">
+          <mat-option value="option">General</mat-option>
+          <mat-option value="option">Technology</mat-option>
+          <mat-option value="option">Science</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <ckeditor
+        [(ngModel)]="ckeditorContent"
+        [config]="{uiColor: '#ffffff'}"
+        [readonly]="false"
+        debounce="500">
+    </ckeditor>
+    
+
+    <button mat-raised-button class="btn-style" (click)="createBlogStory()">Create</button>
+    
+    </div>
+  </div>

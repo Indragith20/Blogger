@@ -1,0 +1,25 @@
+
+<mat-toolbar layout="row" style="position:fixed">
+  <span>Blogger</span>
+  <a class="mat-button" [routerLink]="['/main']">
+    <button mat-button>Home</button>
+  </a>
+  <a class="mat-button" [routerLink]="['/blogs']">
+    <button mat-button>Blogs</button>  
+  </a>
+  <a class="mat-button" *ngIf="appService.user.blogger" [routerLink]="['/create-blog']">
+    <button mat-button>Create Blog</button>  
+  </a>
+
+  <span class="example-fill-remaining-space"></span>
+  <a class="mat-button" *ngIf="!appService.user.blogger" [routerLink]="['/login']">
+    <button mat-button>Login/SignUp</button>
+  </a>
+  <a class="mat-button" *ngIf="appService.user.blogger" [routerLink]="['/login']">
+    <button mat-button>Profile</button>
+  </a>
+</mat-toolbar>
+
+<div class="content">
+    <router-outlet></router-outlet>
+</div>

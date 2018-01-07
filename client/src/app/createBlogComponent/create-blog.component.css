@@ -1,0 +1,25 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .inner-container{
+    display: flex;
+    flex-direction: column;
+    padding-top:50px;
+    width:97%
+  }
+
+  .form-style{
+    padding-top:20px;
+  }
+
+  .btn-style{
+    margin-top:20px;
+    padding:10px;
+  }
+  .fill-space {
+    flex: 1 1 auto;
+  }
