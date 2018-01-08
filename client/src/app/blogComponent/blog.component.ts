@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from '../app.service';
 import { BlogService } from './blog.service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,9 +15,18 @@ export class BlogComponent{
     public cardDetails:any=[];
     public receivedBlogDetails:any;
 
-    constructor(private appService:AppService,private blogService:BlogService,private router:Router){}
+    constructor(private appService:AppService,private blogService:BlogService,private router:Router,private currentRoute:ActivatedRoute){
+        this.currentRoute.params.subscribe((params)=>{
+            if(params.bloggerName){
+                this.getBlogsbyUser(params.bloggerName);
+            }
+            else{
+                this.getGeneralBlogs();
+            }
+        })
+    }
 
-    ngOnInit(){
+    getGeneralBlogs(){
         this.blogService.viewBlogs().subscribe((res)=>{
             console.log(res);
             this.receivedBlogDetails = res;
@@ -26,6 +35,16 @@ export class BlogComponent{
                 this.cardDetails.push(blog);
             }
             
+        });
+    }
+
+    getBlogsbyUser(name:String){
+        this.blogService.viewBlogsByUser(name).subscribe((res)=>{
+            this.receivedBlogDetails = res;
+            for(let blog of this.receivedBlogDetails.data){
+                console.log(blog);
+                this.cardDetails.push(blog);
+            }
         });
     }
 

@@ -18,6 +18,10 @@ const routes: Routes = [
     component: BlogComponent,
   },
   {
+    path: 'blogs/:bloggerName',
+    component: BlogComponent,
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },

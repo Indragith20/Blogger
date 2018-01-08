@@ -42,6 +42,18 @@ app.get('/get-blogs',(req,res)=>{
     });
 });
 
+//get the list of blogs by username
+app.get('/get-blogs/:name',(req,res)=>{
+    blogModel.find({"blogOwner.memberName":req.params.name},(err,blogs)=>{
+        if(err){
+            res.send(err).status(501);
+        }
+        else{
+            res.json({"message":"Get Blogs Successful",data:blogs});
+        }
+    });
+});
+
 //Getting the Particular Full Blog Description
 app.get('/getFullStory/:id',(req,res)=>{
     blogModel.find({blogId:req.params.id},(err,blogs)=>{
@@ -55,6 +67,7 @@ app.get('/getFullStory/:id',(req,res)=>{
     })
 });
 
+//like the particular story
 app.post('/like-story',(req,res)=>{
     blogModel.findOneAndUpdate({blogId:req.body.blogId},
         {$push: {"likes":{"memberId": req.body.memberId,"memberName":req.body.memberName}}},
@@ -76,6 +89,7 @@ app.post('/like-story',(req,res)=>{
     })
 });
 
+//unlike scenario story
 app.post('/un-like-story',(req,res)=>{
     blogModel.update({"blogId":req.body.blogId},{$pull:{"likes":{"memberId":req.body.memberId}}},
     {safe: true, multi:true },(err,blog)=>{
