@@ -7,6 +7,7 @@ var Schema=mongoose.Schema;
 var userDetailsSchema = new Schema({
     firstName:String,
     lastName:String,
+    userName:String,
     contactNumber:Number,
     password:String,
     userRole:String,

@@ -22,6 +22,7 @@ export class LoginComponent{
         this.createForm();
     }
 
+    //************userEmail may be username or EMail Id**************//
     createForm(){
         this.loginForm = this.fb.group({
             userEmail:'',
@@ -35,7 +36,7 @@ export class LoginComponent{
             this.loggedInUser=res;
             this.user = {
                 memberId:this.loggedInUser.data.memberId,
-                name:this.loggedInUser.data.firstName,
+                name:this.loggedInUser.data.userName,
                 email:this.loggedInUser.data.emailId,
                 likedBlogs:this.loggedInUser.data.likedBlogs,
                 blogger:true

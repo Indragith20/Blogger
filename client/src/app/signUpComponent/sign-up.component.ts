@@ -26,6 +26,7 @@ export class SignupComponent{
       this.signUpForm=this.fb.group({
         firstName:'',
         lastName:'',
+        userName:'',
         email:'',
         contact:'',
         birthDate:''
